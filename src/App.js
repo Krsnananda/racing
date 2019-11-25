@@ -1,27 +1,67 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import Countdown from "./Countdown";
+import Popup from "./Popup";
 import './App.css';
+ 
 
-function App() {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      seconds: '00'
-    }
+      // username: '',
+      showPopup: false
+    };
+    this.togglePopup = this.togglePopup.bind(this);
+    // this.addValue = this.addValue.bind(this);
+    // this.updateInput = this.updateInput.bind(this);
   }
 
-render() {
-  return (
-    <div className="App">
-      <form class="" action="index.html" method="post">
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+  }
+
+  // addValue(event){
+  //   event.preventDefault();
+  //   if (this.state.value !== undefined) {
+  //     alert('Seu nome está: ' + this.state.value)
+  //   }
+  // }
+
+  // updateInput(event) {
+  //   const username = event.target.value;
+  //   this.setState ({username})
+  //   console.log(username);
+  // }
+  
+  componentDidMount() {
+    this.togglePopup();  
+  }
+
+  render() {
+    return (
+      <div className="App">
         <h1>Corrida de Fusca</h1>
-        <input type="text" placeholder="Insira seu nome aqui" class="txtb"></input>
-        <input type="submit" value="Começar corrida" class="signup-btn"></input>
-        {/* <header className="App-header"> */}
-      {/* </header> */}
-    </form>
-  </div>
+          {/* <button onClick={this.togglePopup.bind(this)}> click to launch</button> */}
+          {this.state.showPopup ?  
+          <Popup text="Testando"
+          closePopup={this.togglePopup.bind(this)}
+          />
+          : null  
+          }  
+        {/* <form onSubmit={this.value}>
+          <input type="text" onChange={this.updateInput} placeholder="Insira seu nome aqui" className="txtb" id="name"></input>
+          <input type="submit" value="testando botão :)"></input>
+        </form>
+        <div className="Timers">
+          <Countdown />
+          <br/>
+          <Popup />
+        </div> */}
+      </div>
     );
-  };
+  }
 }
+
 export default App;
