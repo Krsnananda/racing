@@ -8,12 +8,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // username: '',
+      username: '',
       showPopup: false
     };
     this.togglePopup = this.togglePopup.bind(this);
-    // this.addValue = this.addValue.bind(this);
-    // this.updateInput = this.updateInput.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.updateInput = this.updateInput.bind(this);
   }
 
   togglePopup() {
@@ -22,18 +22,27 @@ class App extends Component {
     });
   }
 
-  // addValue(event){
-  //   event.preventDefault();
-  //   if (this.state.value !== undefined) {
-  //     alert('Seu nome está: ' + this.state.value)
-  //   }
-  // }
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
 
-  // updateInput(event) {
-  //   const username = event.target.value;
-  //   this.setState ({username})
-  //   console.log(username);
-  // }
+  handleSubmit(event) {
+    alert('Um nome foi enviado: ' + this.state.value);
+    event.preventDefault();
+  }
+
+  handleChange(event){
+    event.preventDefault();
+    if (this.state.value !== undefined) {
+      alert('Seu nome está: ' + this.state.value)
+    }
+  }
+
+  updateInput(event) {
+    const username = event.target.value;
+    this.setState ({username})
+    console.log(username);
+  }
   
   componentDidMount() {
     this.togglePopup();  
@@ -43,22 +52,20 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Corrida de Fusca</h1>
-          {/* <button onClick={this.togglePopup.bind(this)}> click to launch</button> */}
           {this.state.showPopup ?  
           <Popup text="Testando"
           closePopup={this.togglePopup.bind(this)}
           />
           : null  
           }  
-        {/* <form onSubmit={this.value}>
+        <form onSubmit={this.handleSubmit}>
           <input type="text" onChange={this.updateInput} placeholder="Insira seu nome aqui" className="txtb" id="name"></input>
           <input type="submit" value="testando botão :)"></input>
         </form>
         <div className="Timers">
           <Countdown />
           <br/>
-          <Popup />
-        </div> */}
+        </div>
       </div>
     );
   }
