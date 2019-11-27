@@ -7,8 +7,6 @@
     right: 0;  
     bottom: 0;  
     margin: auto;  
-    /* background-color: yellow; */
-    /* background-color: rgba(0,0,0, 0.5);   */
   }  
 
 .popup_inner {  
@@ -19,9 +17,9 @@
     bottom: 25%;  
     margin: auto;  
     border-radius: 20px;  
-    background: white;  
+    background: white; 
+    
+    
 }
 
-/* .popup text {
-    color: black;
-} */
+

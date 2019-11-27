@@ -38,7 +38,7 @@ export default class Countdown extends Component {
             ? <h1>Começar!</h1>
             : <h1>Contagem regressiva: {seconds < 10 ? `${seconds}` : seconds}</h1>
         } <br/>
-        <button onClick={this.startTimer} className="signup-btn"> Começar corrida </button>
+        {/* <button onClick={this.startTimer} className="signup-btn"> Começar corrida </button> */}
       </div>
     )
   }
