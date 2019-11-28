@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import Countdown from "./Countdown";
 import Popup from "./Popup";
 import './App.css';
- 
 
 class App extends Component {
   constructor(props) {
@@ -11,9 +10,10 @@ class App extends Component {
       username: '',
     };
   }
+
   render() {
-    return (
-      <div className="App" id="root">
+  return (
+    <div className="App" id="root">
       {/* <div id="content"></div> */}
         <h1>Corrida de Fusca</h1>
         <div className="Timers">
@@ -21,12 +21,11 @@ class App extends Component {
           <Popup
             text='Close Me'
             closePopup={this.togglePopup.bind(this)}
-          />
+            />
           : null
         }
-          <Popup  />
-          <Countdown />
-          {/* <Form /> */}
+      <Popup  />
+      <Countdown />
           <br/>
         </div>
       </div>

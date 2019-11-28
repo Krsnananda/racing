@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 // import ReactDOM from 'react-dom';
 // import App from './App';
 import './Popup.css';
+import {Redirect} from 'react-router';
+import Game from './Game'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from "react-router-dom";
+
 
 export default class Popup extends Component {
   constructor(props) {
@@ -30,6 +38,11 @@ export default class Popup extends Component {
     });
   }
 
+  chamaGame() {
+    this.setState({
+      redirect: true
+    });
+  }
 
   render() {
     return (
@@ -39,18 +52,25 @@ export default class Popup extends Component {
           closePopup={this.togglePopup.bind(this)}
           />
           : null  
-        }  
-        <form onSubmit={this.props.closePopup} className='popup_inner'>    
+        } 
+
+      <Router>
+        <form onSubmit={this.handleSubmit} className='popup_inner'>    
           <h1>{this.props.text}</h1> 
           <input type="text" value={this.state.value} onChange={this.handleChange} 
             placeholder="Insira seu nome aqui" className="txtb" id="name">
           </input>
-          <button className="signup-btn">testando botão :)</button>
+          <Link to="/game/">
+            <button className="signup-btn" onClick={() => this.chamaGame()}>testando botão :)</button>
+          </Link>
+          <Route path="/game/" component={Game}/>
         </form>  
+      </Router> 
       </div>  
     );
   }
 }
+
 
 // ReactDOM.render(
 //   <App />,
